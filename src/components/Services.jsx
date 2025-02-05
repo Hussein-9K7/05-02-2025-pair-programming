@@ -1,18 +1,24 @@
-import { services } from '../data'
-import Title from './Title'
-import Service from './Service'
+import { useState } from 'react';
+import { services } from "../data";
+import Title from './Title';
 
-const Services = () => {
+function Services() {
+  // eslint-disable-next-line no-unused-vars
+  const [servicesData, setServicesData] = useState(services);
+
   return (
-    <section className='section services' id='services'>
-      <Title title='our' subTitle='services' />
-
-      <div className='section-center services-center'>
-        {services.map((service) => {
-          return <Service {...service} key={service.id} />
-        })}
-      </div>
-    </section>
-  )
+    <div>
+      <Title />
+      <h2>Our Services</h2>
+      <ul>
+        {servicesData.map((service, index) => ( 
+          <li key={index}>
+            {service.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
-export default Services
+
+export default Services;
