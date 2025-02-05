@@ -4,17 +4,23 @@ import Title from "./Title";
 import Tour from "./Tour";
 
 const Tours = () => {
-  // eslint-disable-next-line no-unused-vars
   const [toursData, setToursData] = useState(tours);
+
+  const handleRemoveTour = (id) => {
+    setToursData(toursData.filter(tour => tour.id !== id));
+  };
 
   return (
     <section className="section" id="tours">
       <Title title="featured" subTitle="tours" />
       
       <div className="section-center featured-center">
-        {toursData.map((tour) => {
-          return <Tour key={tour.id} {...tour} />;
-        })}
+        {toursData.map((tour) => (
+          <div key={tour.id}>
+            <Tour {...tour} />
+            <button onClick={() => handleRemoveTour(tour.id)}>Remove</button>
+          </div>
+        ))}
       </div>
     </section>
   );
