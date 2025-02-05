@@ -1,3 +1,4 @@
+import './services.css'
 import { useState } from 'react';
 import { services } from "../data";
 import Title from './Title';
